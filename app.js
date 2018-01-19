@@ -1,6 +1,10 @@
 const express = require('express');
+const parser = require('body-parser');
+const cookie = require('cookie-parser')
 const app = express();
 
+app.use(parser.urlencoded({ extended: false }))
+app.use(cookie())
 app.set('view engine', 'pug');
 
 app.get('/', (req, res) => {
@@ -20,7 +24,13 @@ app.get('/cards', (req, res) => {
 })
 
 app.get('/hello', (req, res) => {
-  res.render('hello');
+  res.render('hello', { userName: req.cookies.userName });
+});
+
+// here, to capture form data, we have to use the .post() method
+app.post('/hello', (req, res) => {
+  res.cookie('userName', req.body.userName);
+  res.render('hello', { userName: req.body.userName });
 });
 
 app.listen(3000);
