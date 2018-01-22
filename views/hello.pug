@@ -1,10 +1,7 @@
 extends layout.pug
 
 block content
-  if userName
-    h2 Welcome, #{userName}!
-  else
-    form(action="/hello" method="post")
-      label Please enter your name:
-        input(type="text" name="userName")
-      button(type="submit") Submit
+  form(action="/hello" method="post")
+    label Please enter your name:
+      input(type="text" name="userName")
+    button(type="submit") Submit
