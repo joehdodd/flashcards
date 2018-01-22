@@ -19,7 +19,7 @@ router.get('/:id', (req, res) => {
   let sideToShowDisplay = side === 'question' ? 'Answer' : 'Question';
   const templateData = { id, text, userName, sideToShow, sideToShowDisplay };
 
-  if (!side) res.redirect(`/cards/${id}?side=question`);
+  if (!side) return res.redirect(`/cards/${id}?side=question`);
   if (side === 'question') templateData.hint = hint;
   res.render('card', templateData); // first arg is the .pug file we want to render, second arg can be an object of variables local to the file
 });
