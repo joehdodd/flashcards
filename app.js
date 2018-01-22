@@ -1,10 +1,10 @@
 const express = require('express');
 const parser = require('body-parser');
-const cookie = require('cookie-parser')
+const cookie = require('cookie-parser');
 const app = express();
 
-app.use(parser.urlencoded({ extended: false }))
-app.use(cookie())
+app.use(parser.urlencoded({ extended: false }));
+app.use(cookie());
 app.set('view engine', 'pug');
 
 app.get('/', (req, res) => {
@@ -14,7 +14,7 @@ app.get('/', (req, res) => {
 
 app.get('/cards', (req, res) => {
   res.render('card', { hint: `Think about whose tomb it is.`  }); // first arg is the .pug file we want to render, second arg can be an object of variables local to the file
-})
+});
 
 app.get('/hello', (req, res) => {
   const userName = req.cookies.userName;
@@ -28,9 +28,19 @@ app.post('/hello', (req, res) => {
 });
 
 app.post('/goodbye', (req, res) => { // receiving a post request from our goodbye button causes us to clear the cookie and redirect to /hello
-  res.clearCookie('userName')
+  res.clearCookie('userName');
   res.redirect('/hello');
-})
+});
+
+app.use((req, res, next) => {
+  const err = new Error('Not Found');
+  err.status = 404;
+  next(err);
+}, (err, req, res, next) => {
+  res.locals.error = err;
+  res.status(err.status);
+  res.render('error', err);
+});
 
 app.listen(3000, () => {
   console.log(`The app is running at http://localhost:3000, guy.`);
