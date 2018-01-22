@@ -7,6 +7,7 @@ const app = express();
 
 app.use(parser.urlencoded({ extended: false }));
 app.use(cookie());
+app.use('/static', express.static('public'));
 app.set('view engine', 'pug');
 
 app.use(mainRoutes);

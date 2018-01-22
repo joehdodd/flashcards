@@ -17,7 +17,7 @@ router.get('/:id', (req, res) => {
   const { userName } = req.cookies;
   let sideToShow = side === 'question' ? 'answer' : 'question';
   let sideToShowDisplay = side === 'question' ? 'Answer' : 'Question';
-  const templateData = { id, text, userName, sideToShow, sideToShowDisplay };
+  const templateData = { id, text, userName, side, sideToShow, sideToShowDisplay };
 
   if (!side) return res.redirect(`/cards/${id}?side=question`);
   if (side === 'question') templateData.hint = hint;

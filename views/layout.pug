@@ -2,13 +2,7 @@ doctype html
 html(lang="en")
   head
     title Flash Cards
+    link(rel='stylesheet', href='/static/stylesheets/style.css')
   body
-    header
-      h1 Flash Cards
-    if userName
-      h2 Welcome, #{userName}!
-      form(action="/goodbye" method="post")
-        button(type="submit") Goodbye!
-    block content
-    footer
-      p An app to help you study.
+    include includes/header.pug
+    block main
