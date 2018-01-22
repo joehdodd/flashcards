@@ -8,9 +8,10 @@ block content
         each color in colors
           li(style={color: color}) #{color}
     //- another way to pass a variable 
-    h2= prompt
+    h2= text
     if hint
       p
         i Hint: #{hint}
-    //- else 
-    //-   p (There is no hint!)
+    a(href=`${id}?side=${sideToShow}`)= sideToShowDisplay
+    br
+    a(href='/cards') Next Card
