@@ -83,6 +83,11 @@ input {
   color: #727C85;
   text-align: center;
   border-radius: 20px;
+  padding: 5px;
+}
+
+.namecard-login {
+  display: flex;
 }
 
 .namecard-hello {
@@ -98,7 +103,8 @@ input {
 .namecard-greeting {
   font-size: 1em;
   font-weight: 400;
-  width: 50%;
+  width: 45%;
+  align-self: center;
 }
 
 .namecard-form {
