@@ -2,5 +2,5 @@
 
 #### Run it...
 
-`npm install`
+`npm install` then...
 `nodemon`
