@@ -1,5 +1,5 @@
 ### Pug, Node, Express
 
-#### Run it
+#### Run it...
 
 `npm install`
